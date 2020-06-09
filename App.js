@@ -1,24 +1,6 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableWithoutFeedback } from "react-native";
-
+import Loading from "./Loading";
+// 웬만하면 flex에서 레이아웃 작업 권장.
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.fucking}>뻑킹 혜진</Text>
-      <Text style={styles.fucking}>뻑킹 혜진</Text>
-    </View>
-  );
+  return <Loading />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "pink",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  fucking: {
-    color: "white",
-    fontWeight: "900",
-  },
-});
