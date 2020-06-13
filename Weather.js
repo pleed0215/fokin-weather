@@ -34,7 +34,7 @@ export default function Weather({ temp, condition, loc, desc }) {
           size={96}
           color="white"
         />
-        <Text style={styles.tempFont}>{temp}℃</Text>
+        <Text style={styles.tempFont}>{Math.floor(temp)}℃</Text>
       </View>
       <View style={styles.childContainer}>
         <Text style={styles.tempFont}>{loc}</Text>
