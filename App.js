@@ -50,5 +50,14 @@ export default function App() {
     text = JSON.stringify(location);
   }
   console.log(weather);
-  return isLoading ? <Loading /> : <Weather temp={weather.main.temp} />;
+  return isLoading ? (
+    <Loading />
+  ) : (
+    <Weather
+      temp={weather.main.temp}
+      condition={weather.weather[0].main}
+      loc={weather.name}
+      desc={weather.weather[0].description}
+    />
+  );
 }
