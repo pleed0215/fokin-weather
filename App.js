@@ -39,17 +39,12 @@ export default function App() {
         setWeather(currWeather);
         setLoading(false);
       } catch (err) {
-        Alert.alert("Error in initializing", "haha. you're poor");
+        console.log(err);
+        Alert.alert("Error in initializing", "haha");
       }
     })();
   });
-  let text = "Waiting..";
-  if (errorMsg) {
-    text = errorMsg;
-  } else if (location) {
-    text = JSON.stringify(location);
-  }
-  console.log(weather);
+
   return isLoading ? (
     <Loading />
   ) : (

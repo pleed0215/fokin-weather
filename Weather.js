@@ -1,39 +1,46 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, StatusBar } from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { LinearGradient } from "expo-linear-gradient";
 
-const IconNames = (name) => {
+const weatherIconStyle = (name) => {
   switch (name) {
     case "Thunderstorm":
-      return "weather-lightning";
+      return { icon: "weather-lightning", style: ["#0518ff", "#00ffef"] };
     case "Drizzle":
-      return "weather-hail";
+      return { icon: "weather-hail", style: ["#ff8605", "#d8ff00"] };
     case "Rain":
-      return "weather-pouring";
+      return { icon: "weather-pouring", style: ["#16b3f8", "#6a82ff"] };
     case "Snow":
-      return "weather-snowy";
+      return { icon: "weather-snowy", style: ["#c9ffeb", "#00f6ff"] };
     case "Clear":
-      return "weather-sunny";
+      return { icon: "weather-sunny", style: ["#bcf7b8", "#48d351"] };
     case "Clouds":
-      return "weather-cloudy";
+      return { icon: "weather-cloudy", style: ["#bcf7b8", "#9568ff"] };
     default:
-      return "weather-fog";
+      return { icon: "weather-fog", style: ["#bcf7b8", "#ff68c7"] };
   }
 };
 
 export default function Weather({ temp, condition, loc, desc }) {
+  const iconAndStyle = weatherIconStyle(condition);
   return (
-    <View style={styles.container}>
+    <LinearGradient colors={iconAndStyle.style} style={styles.container}>
+      <StatusBar barStyle="light-content" />
       <View style={styles.childContainer}>
-        <MaterialCommunityIcons name={IconNames(condition)} size={96} />
+        <MaterialCommunityIcons
+          name={iconAndStyle.icon}
+          size={96}
+          color="white"
+        />
         <Text style={styles.tempFont}>{temp}℃</Text>
       </View>
       <View style={styles.childContainer}>
-        <Text>{loc}</Text>
-        <Text>{desc}</Text>
+        <Text style={styles.tempFont}>{loc}</Text>
+        <Text style={styles.tempFont}>{desc}</Text>
       </View>
-    </View>
+    </LinearGradient>
   );
 }
 
@@ -52,6 +59,7 @@ const styles = StyleSheet.create({
   },
   tempFont: {
     fontSize: 46,
+    color: "white",
   },
   childContainer: {
     flex: 1,
