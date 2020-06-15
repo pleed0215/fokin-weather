@@ -37,8 +37,8 @@ export default function Weather({ temp, condition, loc, desc }) {
         <Text style={styles.tempFont}>{Math.floor(temp)}℃</Text>
       </View>
       <View style={styles.childContainer}>
-        <Text style={styles.tempFont}>{loc}</Text>
-        <Text style={styles.tempFont}>{desc}</Text>
+        <Text style={styles.titleFont}>{loc}</Text>
+        <Text style={styles.subtitleFont}>{desc}</Text>
       </View>
     </LinearGradient>
   );
@@ -65,5 +65,15 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+  },
+  titleFont: {
+    fontSize: 39,
+    color: "white",
+    marginBottom: 10,
+  },
+  subtitleFont: {
+    fontSize: 38,
+    color: "white",
+    fontWeight: "600",
   },
 });
